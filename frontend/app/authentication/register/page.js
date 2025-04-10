@@ -1,41 +1,37 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function SignupPage() {
-  const [form, setForm] = useState({ username: '', email: '', contact: '', password: '', confirmPassword: '' });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+export default function RegisterPage() {
+  const [form, setForm] = useState({ username: '', email: '', contact: '', password: '', confirm: '' });
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { username, email, contact, password, confirmPassword } = form;
-
-    if (!username || !email || !contact || !password || !confirmPassword) return alert("All fields required");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return alert("Invalid email");
-    if (password.length < 8) return alert("Password too short");
-    if (password !== confirmPassword) return alert("Passwords do not match");
+    if (form.password !== form.confirm) return alert("Passwords don't match");
 
     const res = await fetch('/api/register', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, email, contact, password })
+      body: JSON.stringify(form),
     });
 
     const data = await res.json();
-    alert(data.message || data.error);
+    if (res.ok) router.push('/authentication/login');
+    else alert(data.message);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
-      <input name="username" placeholder="Username" onChange={handleChange} className="mb-2 p-2 border w-full" />
-      <input name="email" placeholder="Email" onChange={handleChange} className="mb-2 p-2 border w-full" />
-      <input name="contact" placeholder="Contact" onChange={handleChange} className="mb-2 p-2 border w-full" />
-      <input name="password" type="password" placeholder="Password" onChange={handleChange} className="mb-2 p-2 border w-full" />
-      <input name="confirmPassword" type="password" placeholder="Confirm Password" onChange={handleChange} className="mb-2 p-2 border w-full" />
-      <button className="bg-blue-500 text-white p-2 rounded">Register</button>
-    </form>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <form onSubmit={handleSubmit} className="bg-slate-900 p-8 rounded-lg shadow-lg w-full max-w-md space-y-4">
+        <h1 className="text-2xl font-bold text-center text-blue-600">Register</h1>
+        <input className="w-full p-2 border rounded" type="text" placeholder="Username" onChange={(e) => setForm({ ...form, username: e.target.value })} required />
+        <input className="w-full p-2 border rounded" type="email" placeholder="Email" onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+        <input className="w-full p-2 border rounded" type="text" placeholder="Contact" onChange={(e) => setForm({ ...form, contact: e.target.value })} required />
+        <input className="w-full p-2 border rounded" type="password" placeholder="Password" onChange={(e) => setForm({ ...form, password: e.target.value })} required />
+        <input className="w-full p-2 border rounded" type="password" placeholder="Confirm Password" onChange={(e) => setForm({ ...form, confirm: e.target.value })} required />
+        <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Register</button>
+        <p className="text-sm text-center">Already have an account? <a href="/authentication/login" className="text-blue-500 underline">Login</a></p>
+      </form>
+    </div>
   );
 }
