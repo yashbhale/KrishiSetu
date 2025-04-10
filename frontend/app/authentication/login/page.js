@@ -1,28 +1,40 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: '', password: '' });
+  const router = useRouter();
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const res = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form)
+      body: JSON.stringify(form),
     });
-    const data = await res.json();
-    alert(data.message || data.error);
+
+    if (res.ok) {
+      router.push('/dashboard');
+    } else {
+      try {
+        const data = await res.json();
+        alert(data.message || 'Login failed');
+      } catch {
+        alert('Login failed');
+      }
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Login</h2>
-      <input name="email" placeholder="Email" onChange={handleChange} className="mb-2 p-2 border w-full" />
-      <input name="password" type="password" placeholder="Password" onChange={handleChange} className="mb-2 p-2 border w-full" />
-      <button className="bg-blue-500 text-white p-2 rounded">Login</button>
-    </form>
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <form onSubmit={handleLogin} className="bg-slate-900 p-8 rounded-lg shadow-lg w-full max-w-md space-y-4">
+        <h1 className="text-2xl font-bold text-center text-purple-600">Login</h1>
+        <input className="w-full p-2 border rounded" type="email" placeholder="Email" onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+        <input className="w-full p-2 border rounded" type="password" placeholder="Password" onChange={(e) => setForm({ ...form, password: e.target.value })} required />
+        <button className="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700">Login</button>
+        <p className="text-sm text-center">Don't have an account? <a href="/authentication/register" className="text-purple-500 underline">Register</a></p>
+      </form>
+    </div>
   );
 }
