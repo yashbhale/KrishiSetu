@@ -1,15 +1,14 @@
-
 from flask import Flask
+from flask_cors import CORS
+from routes.market_insight_route import market_insights_bp  # Import Market Insights Blueprint
+
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-<<<<<<< HEAD
-    return "Welcome to Flask!"
-=======
-    return "Welcome to Flask Again!"
->>>>>>> 6609f8bf5cd45c4a961d2fa3531337fa978e1d87
+# Enable CORS for frontend communication
+CORS(app)
+
+# Register Blueprints for modular API structure
+app.register_blueprint(market_insights_bp, url_prefix="/api")
 
 if __name__ == "__main__":
     app.run(debug=True)
-
