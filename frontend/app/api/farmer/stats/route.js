@@ -1,222 +1,23 @@
-// /app/api/fake-market-data/route.js
+// /app/api/market-data/route.js
 
-const fakeData = [
-  {
-    state: 'Maharashtra',
-    district: 'Nagpur',
-    market: 'Nagpur',
-    commodity: 'Cotton',
-    variety: 'American Cotton',
-    grade: 'A',
-    min_price: 5100,
-    max_price: 5700,
-    modal_price: 5400,
-    date: '2025-04-10',
-  },
-  {
-    state: 'Maharashtra',
-    district: 'Nagpur',
-    market: 'Nagpur',
-    commodity: 'Cotton',
-    variety: 'American Cotton',
-    grade: 'A',
-    min_price: 5200,
-    max_price: 5800,
-    modal_price: 5500,
-    date: '2025-04-11',
-  },
-  {
-    state: 'Maharashtra',
-    district: 'Nagpur',
-    market: 'Nagpur',
-    commodity: 'Cotton',
-    variety: 'American Cotton',
-    grade: 'A',
-    min_price: 5000,
-    max_price: 5600,
-    modal_price: 5300,
-    date: '2025-04-11',
-  },
-  {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 5300,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 5300,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 5300,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 7000,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 5300,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 5300,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 1000,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 5300,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 5300,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 5300,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 5300,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 5300,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 5000,
-      max_price: 5600,
-      modal_price: 5300,
-      date: '2025-04-11',
-    },
-    {
-      state: 'Maharashtra',
-      district: 'Nagpur',
-      market: 'Nagpur',
-      commodity: 'Cotton',
-      variety: 'American Cotton',
-      grade: 'A',
-      min_price: 1000,
-      max_price: 5600,
-      modal_price: 1000,
-      date: '2024-04-11',
-    },
-  // ...other entries      
-];
+import { connectDB } from '@/app/lib/mongodb';
+import Price from '@/app/models/Price'; //ake sure this matches your model file
 
 export async function POST(request) {
-const { state, district, commodity } = await request.json();
+  const { state, district, commodity } = await request.json();
 
-const result = fakeData.filter(
-(item) =>
-  item.state.toLowerCase() === state.toLowerCase() &&
-  item.district.toLowerCase() === district.toLowerCase() &&
-  item.commodity.toLowerCase() === commodity.toLowerCase()
-);
+  try {
+    await connectDB();
 
-return Response.json(result);
+    const result = await Price.find({
+      state: { $regex: `^${state}$`, $options: 'i' },
+      district: { $regex: `^${district}$`, $options: 'i' },
+      commodity: { $regex: `^${commodity}$`, $options: 'i' },
+    });
+
+    return Response.json(result);
+  } catch (err) {
+    console.error('Error fetching real data:', err);
+    return Response.json({ error: 'Internal server error' }, { status: 500 });
+  }
 }

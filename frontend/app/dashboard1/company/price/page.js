@@ -13,7 +13,6 @@ export default function MandiForm() {
     min_price: '',
     max_price: '',
     modal_price: '',
-    date: '',
   });
 
   const handleChange = (e) => {
@@ -23,11 +22,18 @@ export default function MandiForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const today = new Date().toISOString().split('T')[0]; // yyyy-mm-dd format
+
+    const fullData = {
+      ...formData,
+      date: today,
+    };
+
     try {
       const res = await fetch('/api/company/price', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(fullData),
       });
       const data = await res.json();
       alert(data.message || 'Submitted successfully!');
@@ -58,14 +64,13 @@ export default function MandiForm() {
             ['Minimum Price', 'min_price'],
             ['Maximum Price', 'max_price'],
             ['Modal Price', 'modal_price'],
-            ['Date', 'date'],
           ].map(([label, name]) => (
             <div key={name}>
               <label className="block text-green-800 font-semibold mb-2">
                 {label}
               </label>
               <input
-                type={name === 'date' ? 'date' : 'text'}
+                type="text"
                 name={name}
                 value={formData[name]}
                 onChange={handleChange}
