@@ -8,7 +8,7 @@ export default function LoginPage() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const res = await fetch('/api/login', {
+    const res = await fetch('/api/user-auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
@@ -33,7 +33,7 @@ export default function LoginPage() {
         <input className="w-full p-2 border rounded" type="email" placeholder="Email" onChange={(e) => setForm({ ...form, email: e.target.value })} required />
         <input className="w-full p-2 border rounded" type="password" placeholder="Password" onChange={(e) => setForm({ ...form, password: e.target.value })} required />
         <button className="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700">Login</button>
-        <p className="text-sm text-center">Don't have an account? <a href="/authentication/register" className="text-purple-500 underline">Register</a></p>
+        <p className="text-sm text-center">Don't have an account? <a href="/authentication/user-auth/register" className="text-purple-500 underline">Register</a></p>
       </form>
     </div>
   );

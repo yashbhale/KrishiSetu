@@ -8,7 +8,7 @@ export default function DashboardPage() {
   useEffect(() => {
     const getSession = async () => {
       try {
-        const res = await fetch('/api/user-auth/session');
+        const res = await fetch('/api/company-auth/session');
         if (!res.ok) throw new Error('Unauthorized or session error');
         const data = await res.json();
         console.log(data);

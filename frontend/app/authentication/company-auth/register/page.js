@@ -10,13 +10,13 @@ export default function RegisterPage() {
     e.preventDefault();
     if (form.password !== form.confirm) return alert("Passwords don't match");
 
-    const res = await fetch('/api/register', {
+    const res = await fetch('/api/company-auth/register', {
       method: 'POST',
       body: JSON.stringify(form),
     });
 
     const data = await res.json();
-    if (res.ok) router.push('/authentication/login');
+    if (res.ok) router.push('/authentication/company-auth/login');
     else alert(data.message);
   };
 
@@ -30,7 +30,7 @@ export default function RegisterPage() {
         <input className="w-full p-2 border rounded" type="password" placeholder="Password" onChange={(e) => setForm({ ...form, password: e.target.value })} required />
         <input className="w-full p-2 border rounded" type="password" placeholder="Confirm Password" onChange={(e) => setForm({ ...form, confirm: e.target.value })} required />
         <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Register</button>
-        <p className="text-sm text-center">Already have an account? <a href="/authentication/login" className="text-blue-500 underline">Login</a></p>
+        <p className="text-sm text-center">Already have an account? <a href="/authentication/company-auth/login" className="text-blue-500 underline">Login</a></p>
       </form>
     </div>
   );
