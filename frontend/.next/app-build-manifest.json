@@ -31,10 +31,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/user-auth/session/route.js"
     ],
-    "/_not-found/page": [
+    "/authentication/company-auth/login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/authentication/company-auth/login/page.js"
+    ],
+    "/authentication/company-auth/register/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/authentication/company-auth/register/page.js"
     ]
   }
 }
