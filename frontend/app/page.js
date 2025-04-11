@@ -68,7 +68,7 @@ export default function Homepage() {
             </div>
             <h2 className="text-xl font-semibold text-green-800">Check Price</h2>
             <p className="text-gray-600 mt-2">Get real-time crop price estimation based on market trends.</p>
-            <Link href="/farmer/stats">
+            <Link href="/farmer/price-stats">
               <button className="mt-4 w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-xl transition">
                 Go to Check Price
               </button>

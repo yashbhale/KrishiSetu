@@ -29,7 +29,7 @@ export default function MarketStatsPage() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
 
 const [mandiSearch, setMandiSearch] = useState('');
 
@@ -55,11 +55,24 @@ const handleSubmit = async (e) => {
     setLoading(false);
 };
 
-const todaysData = data.filter((item) => item.date === today);
+const todaysData = data.filter((item) => {
+  const itemDate = new Date(item.date).toLocaleDateString('en-CA', {
+    timeZone: 'Asia/Kolkata',
+  });
+  return itemDate === today;
+});
+
 const chartData = data.map((item) => ({
-    date: item.date,
-    modal_price: item.modal_price,
+  date: new Date(item.date).toLocaleDateString('en-CA', {
+    timeZone: 'Asia/Kolkata',
+  }),
+  modal_price: item.modal_price,
 }));
+
+
+console.log(today,data);
+
+
 
 const filteredTodaysData = useMemo(() => {
   return todaysData.filter((item) =>
