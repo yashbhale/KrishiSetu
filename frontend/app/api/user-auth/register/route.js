@@ -4,17 +4,22 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
 export async function POST(req) {
-  await connectDB();
-  const { username, email, contact, password } = await req.json();
+  try {
+    await connectDB();
+    const { username, email, contact, password } = await req.json();
 
-  const existingUser = await User.findOne({ email });
-  if (existingUser) {
-    return NextResponse.json({ message: "User already exists" }, { status: 400 });
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return NextResponse.json({ message: "User already exists" }, { status: 400 });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ username, email, contact, password: hashedPassword });
+    await newUser.save();
+
+    return NextResponse.json({ message: "User registered successfully" }, { status: 201 });
+  } catch (error) {
+    console.error("Registration error:", error);
+    return NextResponse.json({ message: "Server error. Please try again." }, { status: 500 });
   }
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const newUser = new User({ username, email, contact, password: hashedPassword });
-  await newUser.save();
-
-  return NextResponse.json({ message: "User registered successfully" }, { status: 201 });
 }
