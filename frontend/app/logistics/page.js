@@ -3,11 +3,14 @@
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import { Warehouse, Store, Truck, UploadCloud } from 'lucide-react'; // Optional icons
+import PageVoiceAssistant from '../components/PageVoiceAssistant';
 
 export default function LogisticsPage() {
     return (
+        <>
+        <Navbar />
+        <PageVoiceAssistant audioFile="logistics.mp3" />
         <div className="min-h-screen bg-gray-50">
-            <Navbar />
             <div className="max-w-6xl mx-auto px-4 py-10 text-center">
                 {/* <h1 className="text-4xl font-bold text-green-700 mb-4">Logistics Portal</h1> */}
                 <p className="text-gray-700 mb-10 text-lg">
@@ -68,5 +71,6 @@ export default function LogisticsPage() {
                 </div>
             </div>
         </div>
+        </>
     );
 }

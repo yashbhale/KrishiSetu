@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import Navbar from '@/app/components/Navbar';
+import PageVoiceAssistant from '@/app/components/PageVoiceAssistant';
 
 export default function LogisticsPage() {
   const [data, setData] = useState(null);
@@ -30,6 +32,9 @@ export default function LogisticsPage() {
     : 0;
 
   return (
+    <>
+    <Navbar />
+    <PageVoiceAssistant audioFile="logistics.mp3" />
     <div className="min-h-screen bg-gray-50 p-6 space-y-6">
       <h1 className="text-4xl font-bold text-center text-green-700">
         Company Logistics Dashboard
@@ -96,5 +101,6 @@ export default function LogisticsPage() {
         </Card>
       </div>
     </div>
+    </>
   );
 }
