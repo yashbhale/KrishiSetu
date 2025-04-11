@@ -59,6 +59,9 @@ export default function MarketStatsPage() {
     return itemDate === today;
   });
 
+  console.log(today,data);
+  
+
   const chartData = data.map((item) => ({
     date: new Date(item.date).toLocaleDateString('en-CA', {
       timeZone: 'Asia/Kolkata',

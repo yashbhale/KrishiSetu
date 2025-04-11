@@ -22,7 +22,7 @@ export default function MandiForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const today = new Date().toISOString().split('T')[0]; // yyyy-mm-dd format
+    const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
 
     const fullData = {
       ...formData,
