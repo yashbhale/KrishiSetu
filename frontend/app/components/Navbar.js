@@ -11,17 +11,7 @@ const Navbar = () => {
         <div className="text-2xl font-bold tracking-wide">🌾 KrishiSetu</div>
 
         {/* Links */}
-        <ul className="flex space-x-6 text-md font-medium">
-          <li>
-            <a href="/" className="hover:text-green-200 transition">Home</a>
-          </li>
-          <li>
-            <a href="/about" className="hover:text-green-200 transition">About</a>
-          </li>
-          <li>
-            <a href="/contact" className="hover:text-green-200 transition">Contact</a>
-          </li>
-        </ul>
+        
 
         {/* Login Dropdown */}
         <div className="relative">

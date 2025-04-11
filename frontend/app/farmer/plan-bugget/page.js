@@ -11,6 +11,8 @@ import {
   SelectContent, SelectItem
 } from '@/components/ui/select';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import Navbar from '@/app/components/Navbar';
+import PageVoiceAssistant from '@/app/components/PageVoiceAssistant';
 
 const COLORS = ['#4caf50', '#81c784', '#a5d6a7', '#c8e6c9'];
 
@@ -80,6 +82,9 @@ export default function PlanBudgetPage() {
   };
 
   return (
+    <>
+    <Navbar />
+    <PageVoiceAssistant audioFile="planbudget.mp3" />
     <div className="max-w-5xl mx-auto py-10 px-4 space-y-8">
       <Card className="shadow-md border border-green-300">
         <CardHeader className="bg-green-100 border-b">
@@ -165,5 +170,6 @@ export default function PlanBudgetPage() {
         </Card>
       )}
     </div>
+    </>
   );
 }
