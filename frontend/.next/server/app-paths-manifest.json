@@ -1,8 +1,0 @@
-{
-  "/authentication/user-auth/login/page": "app/authentication/user-auth/login/page.js",
-  "/authentication/company-auth/register/page": "app/authentication/company-auth/register/page.js",
-  "/user/buycrop/page": "app/user/buycrop/page.js",
-  "/user/sellcrop/page": "app/user/sellcrop/page.js",
-  "/page": "app/page.js",
-  "/dashboard1/company/logistics/page": "app/dashboard1/company/logistics/page.js"
-}
