@@ -1,13 +1,5 @@
 @import "tailwindcss";
 
-<<<<<<< HEAD
-.body {
-  padding:0;
-  margin:0;
-  font-family: 'Inter', sans-serif;
-  background-color: #f0f0f0;
-}
-=======
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -127,4 +119,3 @@
     @apply bg-background text-foreground;
   }
 }
->>>>>>> 6609f8bf5cd45c4a961d2fa3531337fa978e1d87
