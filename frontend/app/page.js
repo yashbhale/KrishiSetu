@@ -54,7 +54,7 @@ export default function Homepage() {
             </div>
             <h2 className="text-xl font-semibold text-green-800">Plan Budget</h2>
             <p className="text-gray-600 mt-2">Manage your farming budget and predict future expenses.</p>
-            <Link href="/plan-budget">
+            <Link href="/farmer/plan-bugget">
               <button className="mt-4 w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-xl transition">
                 Go to Plan Budget
               </button>
