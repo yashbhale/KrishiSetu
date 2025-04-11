@@ -10,7 +10,7 @@ export default function RegisterPage() {
     e.preventDefault();
     if (form.password !== form.confirm) return alert("Passwords don't match");
 
-    const res = await fetch('/api//register', {
+    const res = await fetch('/api/user-auth/register', {
       method: 'POST',
       body: JSON.stringify(form),
     });
