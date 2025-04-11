@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/Navbar';
+import PageVoiceAssistant from '../../components/PageVoiceAssistant';
 
 const BuyCropPage = () => {
   const [crops, setCrops] = useState([]);
@@ -23,6 +24,7 @@ const BuyCropPage = () => {
   return (
     <>
       <Navbar />
+      <PageVoiceAssistant audioFile="buy-page.mp3" />
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-6">
         <h1 className="text-4xl font-extrabold text-center text-green-700 mb-12 drop-shadow-md">🌾 Buy Fresh Crops</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">

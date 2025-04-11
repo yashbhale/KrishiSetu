@@ -5,11 +5,14 @@ import React from 'react';
 import Link from 'next/link';
 import { Tractor, ShoppingCart, DollarSign, BarChart, MapPin, TrendingUp } from "lucide-react";
 import Navbar from './components/Navbar';
+import PageVoiceAssistant from './components/PageVoiceAssistant';
 
 export default function Homepage() {
   return (
     <>
       <Navbar />
+            <PageVoiceAssistant audioFile="homepage.mp3" />
+      
       <div className="min-h-screen bg-gradient-to-b from-green-50 to-white px-4 py-10">
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-green-800">Welcome to KrishiSetu 🌾</h1>
