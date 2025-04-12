@@ -1,0 +1,36 @@
+2025/04/12-13:42:06.112 2bb0 Reusing MANIFEST C:\Code\Projects\Krishisetu\KrishiSetu\frontend\tokens\krishisetu-test\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/04/12-13:42:06.114 2bb0 Recovering log #225
+2025/04/12-13:42:06.223 2bb0 Reusing old log C:\Code\Projects\Krishisetu\KrishiSetu\frontend\tokens\krishisetu-test\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000225.log 
+2025/04/12-13:42:06.224 2bb0 Delete type=2 #218
+2025/04/12-13:42:06.225 2bb0 Delete type=2 #219
+2025/04/12-13:42:06.225 2bb0 Delete type=2 #220
+2025/04/12-13:42:06.225 2bb0 Delete type=2 #221
+2025/04/12-13:42:06.225 2bb0 Delete type=2 #222
+2025/04/12-13:42:06.225 2bb0 Delete type=2 #223
+2025/04/12-13:42:06.225 2bb0 Delete type=2 #226
+2025/04/12-13:42:08.613 3638 Level-0 table #235: started
+2025/04/12-13:42:08.635 3638 Level-0 table #235: 667894 bytes OK
+2025/04/12-13:42:08.638 3638 Delete type=0 #225
+2025/04/12-13:42:08.640 57ec Manual compaction at level-0 from '\x00\x1e\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1f\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/04/12-13:42:11.413 3638 Compacting 1@1 + 6@2 files
+2025/04/12-13:42:11.770 3638 Generated table #236@1: 39603 keys, 2196633 bytes
+2025/04/12-13:42:12.288 3638 Generated table #237@1: 66119 keys, 2234089 bytes
+2025/04/12-13:42:12.425 3638 Generated table #238@1: 23285 keys, 2176447 bytes
+2025/04/12-13:42:12.641 3638 Generated table #239@1: 33204 keys, 2203578 bytes
+2025/04/12-13:42:12.842 3638 Generated table #240@1: 37559 keys, 2175696 bytes
+2025/04/12-13:42:13.164 3638 Generated table #241@1: 92677 keys, 1909178 bytes
+2025/04/12-13:42:13.165 3638 Compacted 1@1 + 6@2 files => 12895621 bytes
+2025/04/12-13:42:13.168 3638 compacted to: files[ 0 0 6 0 0 0 0 ]
+2025/04/12-13:42:13.169 3638 Delete type=2 #227
+2025/04/12-13:42:13.170 3638 Delete type=2 #228
+2025/04/12-13:42:13.170 3638 Delete type=2 #229
+2025/04/12-13:42:13.170 3638 Delete type=2 #230
+2025/04/12-13:42:13.170 3638 Delete type=2 #231
+2025/04/12-13:42:13.170 3638 Delete type=2 #232
+2025/04/12-13:42:13.170 3638 Delete type=2 #235
+2025/04/12-13:42:39.887 2bb0 Level-0 table #243: started
+2025/04/12-13:42:40.097 2bb0 Level-0 table #243: 1141989 bytes OK
+2025/04/12-13:42:40.106 2bb0 Delete type=0 #234
+2025/04/12-13:42:40.114 2bb0 Compacting 1@1 + 6@2 files
+2025/04/12-13:42:40.707 2bb0 Generated table #244@1: 40352 keys, 2197153 bytes
+2025/04/12-13:42:41.586 2bb0 Generated table #245@1: 65950 keys, 2233103 bytes
