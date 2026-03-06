@@ -8,7 +8,7 @@ export async function POST(req) {
 
     const contents = [{ parts: [{ text: prompt }] }];
 
-    const apiKey = 'AIzaSyCNAEPa9btaB2eYw05ZxZGo6INVlojTxXE'; // move to env variable in prod
+    const apiKey = 'xx'; // move to env variable in prod
 
     const geminiRes = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
