@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Warehouse } from 'lucide-react';
+import { Languages, Warehouse } from 'lucide-react';
 
 export default function PostStoragePage() {
   const [form, setForm] = useState({
@@ -19,12 +19,16 @@ export default function PostStoragePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      navigator.geolocation.getCurrentPosition((pos)=>{
+      const lat = pos.coords.latitude
+      const lng = pos.coords.longitude
+})
       const res = await fetch('/api/post-storage', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify(form,lat,lng),
       });
 
       const data = await res.json();

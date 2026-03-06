@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Navbar from '../../../components/Navbar';
+import PriceAlert from "@/app/models/PriceAlert"
 
 export default function MandiForm() {
   const [formData, setFormData] = useState({
@@ -37,6 +38,21 @@ export default function MandiForm() {
       });
       const data = await res.json();
       alert(data.message || 'Submitted successfully!');
+      const alerts = await PriceAlert.find({
+      commodity: body.commodity,
+      targetPrice: { $lte: body.modal_price }
+      })
+
+      for(const alert of alerts){
+
+      const message = `🌾 Price Alert!
+      ${body.commodity} price is now ₹${body.modal_price}`
+
+      exec(`node ${whatsappSenderPath} "${encodeURIComponent(JSON.stringify({
+        ...body,
+        phone: alert.phone
+      }))}"`)
+      }
     } catch (err) {
       console.error(err);
       alert('Submission failed');

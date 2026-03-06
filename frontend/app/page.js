@@ -1,3 +1,4 @@
+
 // pages/index.js
 'use client'
 

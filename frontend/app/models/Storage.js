@@ -6,8 +6,22 @@ const StorageSchema = new mongoose.Schema({
   price: String,
   contact: String,
   description: String,
-}, {
-  timestamps: true,
+
+  coordinates: {
+    type: {
+      type: String,
+      enum: ["Point"],
+      default: "Point"
+    },
+    coordinates: {
+      type: [Number], // [longitude, latitude]
+    }
+  }
+
+},{
+  timestamps:true
 });
 
-export default mongoose.models.Storage || mongoose.model('Storage', StorageSchema);
+StorageSchema.index({ coordinates: "2dsphere" });
+
+export default mongoose.models.Storage || mongoose.model("Storage", StorageSchema);
